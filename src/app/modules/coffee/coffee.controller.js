@@ -36,7 +36,26 @@ const getAllCoffees = async (req, res) => {
   }
 };
 
+const getSingleCoffee = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await coffeeService.getSingleCoffee(id);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Fetch coffe succesfully!!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: "Fetch coffe failed!!",
+      error,
+    });
+  }
+};
+
 module.exports.coffeeController = {
   createCoffee,
   getAllCoffees,
+  getSingleCoffee,
 };

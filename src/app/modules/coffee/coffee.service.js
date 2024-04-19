@@ -10,7 +10,13 @@ const getAllCoffees = async () => {
   return result;
 };
 
+const getSingleCoffee = async (id) => {
+  const result = await Coffee.findOne({ _id: id });
+  return result;
+};
+
 module.exports.coffeeService = {
   createCoffee,
   getAllCoffees,
+  getSingleCoffee,
 };
